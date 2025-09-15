@@ -23,7 +23,8 @@ class Program
             Console.WriteLine("3. Display All (chronological order)");
             Console.WriteLine("4. View all (unsorted/original order)");
             Console.WriteLine("5. Save");
-            Console.WriteLine("6. Quit");
+            Console.WriteLine("6. Load");
+            Console.WriteLine("7. Quit");
 
             bool validInput = false;
 
@@ -33,9 +34,9 @@ class Program
                 string userInput = Console.ReadLine();
                 validInput = int.TryParse(userInput, out choice);
 
-                if (!validInput || choice < 1 || choice > 6)
+                if (!validInput || choice < 1 || choice > 7)
                 {
-                    Console.WriteLine("Invalid input. Please enter a number between 1 and 6. ");
+                    Console.WriteLine("Invalid input. Please enter a number between 1 and 7. ");
                     validInput = false;
                 }
             }
@@ -93,8 +94,16 @@ class Program
 
             else if (choice == 6)
             {
+                Console.Write("Enter a filename to load your journal entries: ");
+                string filename = Console.ReadLine();
+                theJournal.LoadFromFile(filename);
+                Console.WriteLine("Journal loaded successfully!");
+            }
+
+            else if (choice == 7)
+            {
                 Console.WriteLine("See you next time! ");
             }
-        } while (choice != 6);     
+        } while (choice != 7);     
     }
 }
